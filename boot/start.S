@@ -6,24 +6,12 @@
 			.section .data.stk
 KERNEL_STACK:
 			.space 0x8000
-.data
-                        .globl mCONTEXT
-mCONTEXT:
-                        .word 0
-
-                        .globl delay
-delay:
-                        .word 0
-
-                        .globl tlbra
-tlbra:
-                        .word 0
 
 
 			.text
-LEAF(_start)           /*在asm.h中定义的叶子函数，叶子函数不调用其它函数*/              
+LEAF(_start)                       
 	
-	.set	mips2      /*.set用于指导汇编器如何工作，控制指令执行顺序*/
+	.set	mips2      
 	.set	reorder
 
 	/* Disable interrupts */
@@ -43,6 +31,7 @@ LEAF(_start)           /*在asm.h中定义的叶子函数，叶子函数不调用其它函数*/
   set up stack 
   you can reference the memory layout in the include/mmu.h
 */
-
-END(_start)            /*在asm.h中定义的函数*/
+	
+	jal	main
+END(_start)            
 
