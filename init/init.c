@@ -9,5 +9,12 @@
 void mips_init()
 {
 	printf("init.c:\tmips_init() is called\n");
+#ifdef FTEST
+FTEST();
+#endif
+
+#ifdef PTEST
+ENV_CREATE(PTEST);
+#endif
 	panic("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 }
