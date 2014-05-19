@@ -1,17 +1,17 @@
 OUTPUT_ARCH(mips)
 /*
-指定输出可执行文件的平台为mips
+鎸囧畾杈撳嚭鍙墽琛屾枃浠剁殑骞冲彴涓簃ips
 */
 ENTRY(_start)
 /*
-指定输出可执行文件的起始代码段为_start
+鎸囧畾杈撳嚭鍙墽琛屾枃浠剁殑璧峰浠ｇ爜娈典负_start
 */
 SECTIONS
 {
 
-/*To do:
-  fill in the correct address of the key section
-  such as text data bss ...
-*/
-end=.;
+	. = 0x80010000;	
+	.text : { *(.text)}	
+	.data : { *(.data)}	
+	.bss : { *(.bss)}
+
 }
