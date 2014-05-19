@@ -9,6 +9,11 @@
 void mips_init()
 {
 	printf("init.c:\tmips_init() is called\n");
+
+
+
+//for your score,don't delete these.
+//------------|
 #ifdef FTEST
 FTEST();
 #endif
@@ -16,5 +21,6 @@ FTEST();
 #ifdef PTEST
 ENV_CREATE(PTEST);
 #endif
+//-----------|
 	panic("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 }
