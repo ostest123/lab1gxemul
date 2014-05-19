@@ -58,24 +58,71 @@ lp_Print(void (*output)(void *, char *, int),
 
     for(;;) {
 	{ 
-	    /* scan for the next '%' */
+		/* scan for the next '%' */
+		/*get the address of fmtStart*/
+		char *fmtStart = fmt;		
+		/*get the end of address of fmtStart*/
+		while((*fmt!='%')&&(*fmt!='\0')){	 
+			fmt++;
+		}
+	
+		/* flush the string found so far */
 	   
+		OUTPUT(arg,fmtStart,fmt-fmtStart);
 
-	    /* flush the string found so far */
-	    
+		/* are we hitting the end? */
 
-	    /* are we hitting the end? */
+		if(*fmt=='\0')
+			break;
 
 	}
 
 	/* we found a '%' */
 	
+	fmt++;			//go to next character
 	
 	/* check for long */
-
+	if(*fmt=='l'){
+		longFlag = 1;	//the string is long
+	}
+	else{
+		longFlag = 0;
+	}
 
 	/* check for other prefixes */
 	
+	//Initialization
+	width = 0;
+	prec = -1;
+	ladjust = 0;
+	padc = ' ';
+	
+	//according prefixes change the sign of string
+	if(*fmt =='-'){
+		ladjust = 1;
+		fmt++;
+	}
+
+	if(*fmt=='0'){
+		padc = '0';
+	       fmt++;
+	}
+
+	if(IsDigit(*fmt)){
+		while(IsDigit(*fmt)){
+			width = 10*width+Ctod(*fmt++);
+		}
+	}
+
+	if(*fmt == ' '){
+		fmt++;
+		if(IsDigit(*fmt)){
+			prec = 0;
+			while(IsDigit(*fmt)){
+				prec= prec*10+Ctod(*fmt++);
+			}
+		}
+	}
 
 	/* check format flag */
 	negFlag = 0;
