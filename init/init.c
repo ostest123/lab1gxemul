@@ -10,4 +10,7 @@ void mips_init()
 {
 	printf("init.c:\tmips_init() is called\n");
 	panic("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+	#ifdef FTEST
+	FTEST();
+	#endif
 }
