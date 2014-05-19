@@ -10,15 +10,21 @@ init_dir	  := init
 lib_dir		  := lib
 tools_dir	  := tools
 vmlinux_elf	  := gxemul/vmlinux
-
+test_dir          :=
+include_mk        := include.mk
 link_script   := $(tools_dir)/scse0_3.lds
 
-modules		  := boot drivers init lib
+modules		  := boot drivers init lib $(test_dir)
 objects		  := $(boot_dir)/start.o			  \
 				 $(init_dir)/main.o			  \
 				 $(init_dir)/init.o			  \
 			   	 $(drivers_dir)/gxconsole/console.o \
 				 $(lib_dir)/*.o
+
+ifneq($(test_dir),)
+objects   :=$(objects)   $(test_dir)/*.o
+
+endif
 
 .PHONY: all $(modules) clean
 
@@ -37,4 +43,4 @@ clean:
 		done; \
 	rm -rf *.o *~ $(vmlinux_elf)
 
-include include.mk
+include $(include_mk)
