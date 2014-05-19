@@ -21,7 +21,7 @@ objects		  := $(boot_dir)/start.o			  \
 			   	 $(drivers_dir)/gxconsole/console.o \
 				 $(lib_dir)/*.o
 
-ifneq($(test_dir),)
+ifneq ($(test_dir),)
 objects   :=$(objects)   $(test_dir)/*.o
 
 endif
