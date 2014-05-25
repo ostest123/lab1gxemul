@@ -12,8 +12,9 @@ void mips_init()
 
 
 
-//for your score,don't delete these.
-//------------|
+//For your grade,don't delete these.
+//Just for the test.
+//------------
 #ifdef FTEST
 FTEST();
 #endif
@@ -21,6 +22,6 @@ FTEST();
 #ifdef PTEST
 ENV_CREATE(PTEST);
 #endif
-//-----------|
+//-----------
 	panic("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 }
