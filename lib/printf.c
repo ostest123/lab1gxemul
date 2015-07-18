@@ -24,8 +24,10 @@ static void myoutput(void *arg, char *s, int l)
     int i;
 
     // special termination call
-    if ((l==1) && (s[0] == '\0')) return;
+   
+    if ((l==1) && (s[0] == '\0')) return; //renturn when the string is empty
     
+    //output a character one by one until the end of string
     for (i=0; i< l; i++) {
 	printcharc(s[i]);
 	if (s[i] == '\n') printcharc('\n');
@@ -34,19 +36,19 @@ static void myoutput(void *arg, char *s, int l)
 
 void printf(char *fmt, ...)
 {
-    va_list ap;
-    va_start(ap, fmt);
-    lp_Print(myoutput, 0, fmt, ap);
-    va_end(ap);
+    va_list ap;		//the Pointer of Pointing to the parameters 
+    va_start(ap, fmt);	//Initialization of variables
+    lp_Print(myoutput, 0, fmt, ap);	//call lp_Print
+    va_end(ap);		//The end of variable parameter acquisition
 }
 
 void
 _panic(const char *file, int line, const char *fmt,...)
 {
-	va_list ap;
+	va_list ap;		 
 
 
-	va_start(ap, fmt);
+	va_start(ap, fmt);	
 	printf("panic at %s:%d: ", file, line);
 	lp_Print(myoutput, 0, (char *)fmt, ap);
 	printf("\n");
