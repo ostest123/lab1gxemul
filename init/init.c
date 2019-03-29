@@ -24,4 +24,7 @@ ENV_CREATE(PTEST);
 #endif
 //-----------
 	panic("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+	#ifdef FTEST
+	FTEST();
+	#endif
 }
